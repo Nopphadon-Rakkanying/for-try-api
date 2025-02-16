@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class TodoListResponse {
-    private String id;
+    private int id;
     private String title;
 }

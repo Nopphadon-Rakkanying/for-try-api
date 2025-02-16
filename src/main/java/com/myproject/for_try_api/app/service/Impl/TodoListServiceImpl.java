@@ -54,7 +54,7 @@ public class TodoListServiceImpl implements TodoListService {
                 mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
                 response = mapper.convertValue(obj.get(), TodoListResponse.class);
             }else {
-                return response;
+                return null;
             }
         }catch (Exception e) {
             log.error(e.getMessage(), e);
@@ -84,6 +84,8 @@ public class TodoListServiceImpl implements TodoListService {
                 obj.get().setId(todoListRequest.getId());
                 obj.get().setTitle(todoListRequest.getTitle());
                 todoListRepositories.saveAndFlush(obj.get());
+            }else{
+                return "not found";
             }
         }catch (Exception e) {
             log.error(e.getMessage(), e);
